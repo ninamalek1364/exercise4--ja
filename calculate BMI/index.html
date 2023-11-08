@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BMI calculate</title>
+    </head>
+    <style>
+        h1 {
+            background-color: rgb(168, 229, 187);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: auto;
+        }
+
+        .value {
+            padding: 8px;
+            margin: 15px 5px;
+        }
+
+        .flex {
+            padding: 4px;
+            margin: auto;
+            width: 25%;
+            position: relative;
+            align-items: end;
+        }
+        #submit {
+            width: 100%;
+            padding: 15px;
+            background-color: rgb(20, 144, 86);
+            color: white;
+        }
+        #heading {
+            margin: 40px 20px;
+            font-size: large;
+            text-align: center;
+        }
+        #bmi {
+            text-align: center;
+            font-size: xx-large;
+        }
+        #result {
+            font-size: x-large;
+        }
+        .img {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <body>
+        <h1>BMI calculate</h1>
+        <div class="img">
+            <img src="img/download0.jpeg" alt="" />
+        </div>
+        <form action="" class="flex">
+            <label for="weight" class="value">enter your weight (Kg):</label>
+            <input type="number" id="weight" class="value" placeholder="please enter your weight" /> <br />
+            <label for="height" class="value">enter your height (m):</label>
+            <input type="number" id="height" class="value" placeholder="please enter your height" />
+        </form>
+        <br />
+
+        <div class="flex"><button id="submit" onclick="calculateBMI()">submit</button></div>
+
+        <p id="heading"></p>
+        <p id="bmi" class="flex"></p>
+        <div class="result" style="display: flex;justify-content: center;">
+            <p id="result" style="text-align: center;padding: 5px;"></p>
+        </div>
+
+        <script>
+            function calculateBMI() {
+                let weight = document.getElementById("weight").value;
+                let height = document.getElementById("height").value;
+                document.getElementById("weight").value = "";
+                document.getElementById("height").value = "";
+                let BMI = weight / (height * height);
+
+                document.getElementById("heading").innerHTML = "your BMI is:";
+                document.getElementById("bmi").innerHTML = BMI.toFixed(2);
+
+                if (BMI < 18) {
+                    document.getElementById("result").innerHTML = `you are under weight
+
+                    <img src="img/download1.jpeg" alt=""> `;
+                  
+                    document.getElementById("result").style.color = "blue";
+                } else if (BMI >= 18 && BMI < 30) {
+                    document.getElementById("result").innerHTML = `you are normal and healthy
+                    <img src="img/download2.jpeg" alt=""> `;
+                    document.getElementById("result").style.color = "green";
+                } else if (BMI >= 30) {
+                    document.getElementById(
+                        "result"
+                    ).innerHTML = `you are fat    <br>    <img src="img/download3.jpeg" alt=""> `;
+                    document.getElementById("result").style.color = "red";
+                }
+            }
+        </script>
+    </body>
+</html>

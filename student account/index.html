@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1 style="font-size: xx-large; text-align: center;background-color: blueviolet;padding: 10px;">*student account*</h1>
+        <p
+            id="result"
+            style="
+                text-align: center;
+                color: blueviolet;
+                background-color: black;
+                padding: 20px;
+                font-weight: 800;
+                font-size: x-large;
+            "
+        >
+            
+        </p>
+
+        <script>
+            class account {
+                constructor(fname, currentmony) {
+                    this.fname = fname;
+                    this.currentmony = currentmony;
+                }
+                set currentmony(value) {
+                    if (value < 0) this._currentmony = 0;
+                    else this._currentmony = value;
+                }
+                get currentmony() {
+                    return this._currentmony;
+                }
+
+                addmony(amount) {
+                    this.currentmony = this.currentmony + amount;
+                }
+                minusmony(amount) {
+                    this.currentmony = this.currentmony - amount;
+                }
+                balence() {
+                    document.getElementById("result").innerHTML += `${this.fname}==========>${this.currentmony} <br>`;
+                }
+            }
+
+            let std1 = new account("sara", 100);
+            std1.addmony(200);
+            std1.minusmony(50);
+            std1.balence();
+            let std2 = new account("mona", 100);
+            std2.balence();
+            let std3 = new account("tara", 200);
+            std3.balence();
+            let std4 = new account("nina", 150);
+            std4.balence();
+        </script>
+    </body>
+</html>
