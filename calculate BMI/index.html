@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,6 +7,11 @@
         <title>BMI calculate</title>
     </head>
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
         h1 {
             background-color: rgb(168, 229, 187);
             color: white;
@@ -67,36 +73,36 @@
 
         <p id="heading"></p>
         <p id="bmi" class="flex"></p>
-        <div class="result" style="display: flex;justify-content: center;">
-            <p id="result" style="text-align: center;padding: 5px;"></p>
+        <div class="result" style="display: flex; justify-content: center">
+            <p id="result" style="text-align: center; padding: 5px"></p>
         </div>
 
         <script>
             function calculateBMI() {
-                let weight = document.getElementById("weight").value;
-                let height = document.getElementById("height").value;
+                let weight = Number(document.getElementById("weight").value);
+                let height = Number(document.getElementById("height").value);
                 document.getElementById("weight").value = "";
                 document.getElementById("height").value = "";
                 let BMI = weight / (height * height);
 
                 document.getElementById("heading").innerHTML = "your BMI is:";
                 document.getElementById("bmi").innerHTML = BMI.toFixed(2);
-
+                let result = document.getElementById("result");
                 if (BMI < 18) {
-                    document.getElementById("result").innerHTML = `you are under weight
+                    result.innerHTML = `you are under weight
 
                     <img src="img/download1.jpeg" alt=""> `;
-                  
-                    document.getElementById("result").style.color = "blue";
+
+                    result.style.color = "blue";
                 } else if (BMI >= 18 && BMI < 30) {
-                    document.getElementById("result").innerHTML = `you are normal and healthy
+                    result.innerHTML = `you are normal and healthy
                     <img src="img/download2.jpeg" alt=""> `;
-                    document.getElementById("result").style.color = "green";
+                    result.style.color = "green";
                 } else if (BMI >= 30) {
                     document.getElementById(
                         "result"
                     ).innerHTML = `you are fat    <br>    <img src="img/download3.jpeg" alt=""> `;
-                    document.getElementById("result").style.color = "red";
+                    result.style.color = "red";
                 }
             }
         </script>
