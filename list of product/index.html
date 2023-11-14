@@ -11,14 +11,33 @@
             crossorigin="anonymous"
         />
     </head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
     <body>
         <div class="container">
             <div class="nav">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="container">
-                        <div class="logo">
-                            <a class="navbar-brand fw-bold" href="#">coffee</a> <img src="img/download2.jpeg" alt="" />
+                        <div class="logo" onclick="openModal()">
+                            <a class="navbar-brand fw-bold" href="#">coffee</a>
+                            <img src="img/download2.jpeg" alt="" />
                         </div>
+                        <!-- hidden modal -->
+                        <div
+                            class="position-relative bg-danger w-50 h-50 rounded-3 p-2 bg-body"
+                            id="openModal"
+                            style="display: none"
+                        >
+                            <h2 class="pt-3">about us</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, quo!</p>
+                            <span class="position-absolute top-0" style="right: 8px;cursor: pointer;" onclick="closeModal()">x</span>
+                        </div>
+                        <!-- end hidden modal -->
                         <div class="navItems ml-5">
                             <button
                                 class="navbar-toggler"
@@ -39,24 +58,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">about us</a>
                                     </li>
-                                    <!-- <li class="nav-item dropdown">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        id="navbarDropdown"
-                                        role="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"
-                                    >
-                                        Dropdown
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><hr class="dropdown-divider" /></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </li> -->
+
                                     <li class="nav-item">
                                         <a class="nav-link active">products</a>
                                     </li>
@@ -78,12 +80,13 @@
                 </nav>
             </div>
         </div>
-
-       
+        <!-- <div class="position-fixed  w-50 h-50 bg-success z-index"></div> -->
         <!--=====================================================products============== -->
         <div class="container">
             <div id="demo" class="row"></div>
         </div>
+
+        <!-- ===============================script===================================================== -->
         <script>
             let product = [
                 {
@@ -98,8 +101,7 @@
                     id: 2,
                     type: "Robusta",
                     price: "80$",
-                    description:
-                        "Robusta plant have double the amount of caffeine in them, meaning that they are an excellent choice for a real boost and offer a more harsh flavour.",
+                    description: "Robusta plant have double choice for a real boost and offer a more harsh flavour.",
                     image: "img/download3.jpeg",
                 },
                 {
@@ -124,27 +126,32 @@
           
             
                
-                    <div class="col-3 g-4 rounded-3 " >
-                        <div class="card shadow-lg h-100">
-                              <img src=${product[i].image} class="card-img-top  " alt="..." />
-                            <div class="card-body">
+                    <div class="col-3 g-4 rounded-3  " >
+                        <div class="card shadow-lg h-100 "id="card"><button type="button" class="btn-close  position-absolute" aria-label="Close"  onclick="close()" ></button>
+                              <div class="h-100 "><img src=${product[i].image} class="card-img-top h-100 " alt="..." /></div>
+                            <div class="card-body" >
                               <h5 class="card-title">${product[i].type}</h5>
                                <p class="card-text">
                                price:${product[i].price}
                                </p>
-                               <p class="card-text">
+                               <p class="card-text mb-5 ">
                                 ${product[i].description}
                                </p>
-                               <a href="#" class="btn btn-success rounded-pill">buy now</a>
+                               <div class="buy">
+                                <a href="#" class="btn btn-success rounded-pill  ">buy now</a>
+                               </div>
 
                             </div>
                         </div>
                     </div>
-             
-           
-              
 
             `;
+                function openModal() {
+                    document.getElementById("openModal").style.display = "block";
+                }
+            }
+            function closeModal() {
+                document.getElementById("openModal").style.display = "none";
             }
         </script>
         <script
